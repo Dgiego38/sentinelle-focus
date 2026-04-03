@@ -7,11 +7,11 @@ targets:
     platform: iOS
     deploymentTarget: "17.4"
     sources: [SentinelleFocus]
-    settings:
+   settings:
       GENERATE_INFOPLIST_FILE: YES
       MARKETING_VERSION: 1.0.0
       CURRENT_PROJECT_VERSION: 1
-    entitlements: SentinelleFocus/SentinelleFocus.entitlements
+      CODE_SIGN_ENTITLEMENTS: SentinelleFocus/SentinelleFocus.entitlements # <-- Change cette ligne
 
   SentinelleShield:
     type: app-extension.shield-configuration
