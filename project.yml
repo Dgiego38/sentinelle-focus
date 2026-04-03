@@ -9,6 +9,7 @@ targets:
     sources: 
       - path: SentinelleFocus
     settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.dgiego38.sentinellefocus
       GENERATE_INFOPLIST_FILE: YES
       MARKETING_VERSION: 1.0.0
       CURRENT_PROJECT_VERSION: 1
