@@ -17,11 +17,12 @@ targets:
       - target: SentinelleLiveActivity
 
   SentinelleShield:
-    type: app-extension.shield-configuration
+    type: app-extension # On utilise le type générique
     platform: iOS
     sources: [ShieldExtension]
     settings:
       GENERATE_INFOPLIST_FILE: YES
+      PRODUCT_BUNDLE_IDENTIFIER: com.dgiego38.sentinellefocus.shield
 
   SentinelleLiveActivity:
     type: app-extension
@@ -29,3 +30,4 @@ targets:
     sources: [LiveActivityExtension]
     settings:
       GENERATE_INFOPLIST_FILE: YES
+      PRODUCT_BUNDLE_IDENTIFIER: com.dgiego38.sentinellefocus.liveactivity
