@@ -1,0 +1,28 @@
+name: SentinelleFocus
+options:
+  bundleIdPrefix: com.dgiego38
+targets:
+  SentinelleFocus:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.4"
+    sources: [SentinelleFocus]
+    settings:
+      GENERATE_INFOPLIST_FILE: YES
+      MARKETING_VERSION: 1.0.0
+      CURRENT_PROJECT_VERSION: 1
+    entitlements: SentinelleFocus/SentinelleFocus.entitlements
+
+  SentinelleShield:
+    type: app-extension.shield-configuration
+    platform: iOS
+    sources: [ShieldExtension]
+    settings:
+      GENERATE_INFOPLIST_FILE: YES
+
+  SentinelleLiveActivity:
+    type: app-extension
+    platform: iOS
+    sources: [LiveActivityExtension]
+    settings:
+      GENERATE_INFOPLIST_FILE: YES
