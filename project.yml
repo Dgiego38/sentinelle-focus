@@ -1,15 +1,15 @@
-name: SentinelleFocus
+name: SentinellePro
 options:
   bundleIdPrefix: com.dgiego38
 targets:
-  SentinelleFocus:
+  SentinellePro:
     type: application
     platform: iOS
     deploymentTarget: "17.4"
     sources: 
       - path: SentinelleFocus
     settings:
-      PRODUCT_BUNDLE_IDENTIFIER: com.dgiego38.sentinellefocus
+      PRODUCT_BUNDLE_IDENTIFIER: com.dgiego38.sentinellepro
       GENERATE_INFOPLIST_FILE: YES
       MARKETING_VERSION: 1.0.0
       CURRENT_PROJECT_VERSION: 1
@@ -24,4 +24,4 @@ targets:
       - path: ShieldExtension
     settings:
       GENERATE_INFOPLIST_FILE: YES
-      PRODUCT_BUNDLE_IDENTIFIER: com.dgiego38.sentinellefocus.shield
+      PRODUCT_BUNDLE_IDENTIFIER: com.dgiego38.sentinellepro.shield
