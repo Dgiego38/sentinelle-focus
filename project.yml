@@ -23,5 +23,9 @@ targets:
     sources: 
       - path: ShieldExtension
     settings:
-      GENERATE_INFOPLIST_FILE: YES
       PRODUCT_BUNDLE_IDENTIFIER: com.dgiego38.sentinellepro.shield
+      GENERATE_INFOPLIST_FILE: YES
+      # Les clés magiques pour corriger l'erreur Code 17 :
+      INFOPLIST_KEY_NSExtension:
+        NSExtensionPointIdentifier: com.apple.ManagedSettingsUI.shield-configuration
+        NSExtensionPrincipalClass: "$(PRODUCT_MODULE_NAME).ShieldConfigurationExtension"
