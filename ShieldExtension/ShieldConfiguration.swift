@@ -3,32 +3,37 @@ import ManagedSettingsUI
 import UIKit
 
 class ShieldConfigurationExtension: ShieldConfigurationDataSource {
-
-    // Configuration pour les Applications
+    
+    // Pour les applications individuelles
     override func configuration(shielding application: Application) -> ShieldConfiguration {
-        return createShieldConfig(title: "FOCUS ACTIF")
+        return createShieldConfig(title: "Sentinelle : App Bloquée")
     }
-
-    // Configuration pour les Catégories (ex: Réseaux Sociaux)
-    override func configuration(shielding category: ActivityCategory) -> ShieldConfiguration {
-        return createShieldConfig(title: "CATÉGORIE BLOQUÉE")
+    
+    // Pour les applications au sein d'une catégorie spécifique
+    override func configuration(shielding application: Application, in category: ActivityCategory) -> ShieldConfiguration {
+        return createShieldConfig(title: "Sentinelle : Catégorie Bloquée")
     }
-
-    // Configuration pour les Domaines Web
+    
+    // Pour les domaines Web
     override func configuration(shielding webDomain: WebDomain) -> ShieldConfiguration {
-        return createShieldConfig(title: "SITE BLOQUÉ")
+        return createShieldConfig(title: "Sentinelle : Site Bloqué")
+    }
+    
+    // Pour les domaines Web au sein d'une catégorie
+    override func configuration(shielding webDomain: WebDomain, in category: ActivityCategory) -> ShieldConfiguration {
+        return createShieldConfig(title: "Sentinelle : Web Bloqué")
     }
 
-    // Fonction d'aide pour éviter la répétition
+    // Design commun (Noir pur OLED)
     private func createShieldConfig(title: String) -> ShieldConfiguration {
         ShieldConfiguration(
             backgroundBlurStyle: .dark,
-            backgroundColor: UIColor(white: 0.0, alpha: 0.95),
-            icon: UIImage(systemName: "lock.fill")?.withTintColor(.lightGray, renderingMode: .alwaysOriginal),
+            backgroundColor: .black,
+            icon: UIImage(systemName: "lock.shield.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal),
             title: ShieldConfiguration.Label(text: title, color: .white),
-            subtitle: ShieldConfiguration.Label(text: "Sentinelle Focus protège votre attention.", color: .gray),
-            primaryButtonLabel: ShieldConfiguration.Label(text: "RETOURNER", color: .white),
-            primaryButtonBackgroundColor: UIColor(white: 0.1, alpha: 1.0)
+            subtitle: ShieldConfiguration.Label(text: "Restez concentré sur votre objectif.", color: .lightGray),
+            primaryButtonLabel: ShieldConfiguration.Label(text: "OK", color: .black),
+            primaryButtonBackgroundColor: .white
         )
     }
 }
