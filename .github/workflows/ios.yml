@@ -1,13 +1,31 @@
 name: iOS Build
 on: [push]
+
 jobs:
   build:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Install XcodeGen
         run: brew install xcodegen
+
       - name: Generate Project
         run: xcodegen generate
-      - name: Build
-        run: xcodebuild -scheme SentinelleFocus -sdk iphonesimulator build
+
+      - name: Build App
+        # On enlève iphonesimulator pour viser le "generic ios"
+        run: |
+          xcodebuild -scheme SentinelleFocus \
+          -archivePath SentinelleFocus.xcarchive \
+          -sdk iphoneos \
+          archive
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: SentinelleFocus-Package
+          path: |
+            *.xcarchive
+            build/
+            SentinelleFocus.app

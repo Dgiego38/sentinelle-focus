@@ -34,11 +34,3 @@ targets:
     settings:
       GENERATE_INFOPLIST_FILE: YES
       PRODUCT_BUNDLE_IDENTIFIER: com.dgiego38.sentinellefocus.liveactivity
-      
-      - name: Upload IPA
-        uses: actions/upload-artifact@v4
-        with:
-          name: SentinelleFocus-Installer
-          path: |
-            build/*.ipa
-            *.ipa
