@@ -16,7 +16,7 @@ jobs:
 
       - name: Build Application (No Sign)
         run: |
-          xcodebuild -scheme SentinelleFocus \
+          xcodebuild -scheme SentinellePro \
           -sdk iphoneos \
           -configuration Debug \
           -derivedDataPath build \
@@ -29,5 +29,5 @@ jobs:
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: SentinelleFocus-Debug-App
-          path: build/Build/Products/Debug-iphoneos/SentinelleFocus.app
+          name: SentinellePro-Debug-App
+          path: build/Build/Products/Debug-iphoneos/SentinellePro.app
