@@ -1,20 +1,20 @@
 // SessionView.swift
-// SENTINELLE FOCUS — Écran session active (Chrono MM:SS centré, fond noir)
+// SENTINELLE FOCUS — Écran session active
 
 import SwiftUI
+import FamilyControls // Ajouté pour la compatibilité des types
+import DeviceActivity  // Ajouté pour la compatibilité
 
 struct SessionView: View {
     @EnvironmentObject var focusManager: FocusManager
     @State private var showStopConfirm = false
 
-    // Refresh every second via TimelineView
     var body: some View {
         TimelineView(.periodic(from: .now, by: 1.0)) { _ in
             ZStack {
                 Color.black.ignoresSafeArea()
 
                 VStack(spacing: 0) {
-
                     // Top label
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Sentinelle Focus")
@@ -56,7 +56,7 @@ struct SessionView: View {
 
                     Spacer()
 
-                    // Stop button — CACHÉ en mode Ultra Focus
+                    // Stop button
                     if isZenMode {
                         Button {
                             showStopConfirm = true
@@ -76,7 +76,6 @@ struct SessionView: View {
                         .padding(.horizontal, 24)
                         .padding(.bottom, 48)
                     } else {
-                        // Ultra Focus — message de verrouillage
                         Text("Verrouillage actif — Impossible d'arrêter")
                             .font(.system(size: 10, weight: .light))
                             .tracking(1.5)
@@ -96,26 +95,24 @@ struct SessionView: View {
         }
     }
 
-    // MARK: - Computed Properties
+    // MARK: - Logic (Assure-toi que FocusMode est bien public dans FocusManager.swift)
 
     private var isZenMode: Bool {
-        focusManager.currentSession?.mode == .zen
+        // On vérifie si le mode est .zen sans forcer le déballage
+        if let session = focusManager.currentSession {
+            return session.mode == .zen
+        }
+        return false
     }
 
     private var modeTitle: String {
-        switch focusManager.currentSession?.mode {
-        case .zen: return "Mode ZEN"
-        case .ultraFocus: return "ULTRA FOCUS"
-        case nil: return "Session"
-        }
+        guard let session = focusManager.currentSession else { return "Session" }
+        return session.mode == .zen ? "Mode ZEN" : "ULTRA FOCUS"
     }
 
     private var modeSubtitle: String {
-        switch focusManager.currentSession?.mode {
-        case .zen: return "Blocage partiel actif"
-        case .ultraFocus: return "Verrouillage strict · Apps bloquées"
-        case nil: return ""
-        }
+        guard let session = focusManager.currentSession else { return "" }
+        return session.mode == .zen ? "Blocage partiel actif" : "Verrouillage strict · Apps bloquées"
     }
 
     private var chronoString: String {
