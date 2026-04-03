@@ -16,7 +16,6 @@ targets:
       CODE_SIGN_ENTITLEMENTS: SentinelleFocus.entitlements
     dependencies:
       - target: SentinelleShield
-      - target: SentinelleLiveActivity
 
   SentinelleShield:
     type: app-extension
@@ -26,12 +25,3 @@ targets:
     settings:
       GENERATE_INFOPLIST_FILE: YES
       PRODUCT_BUNDLE_IDENTIFIER: com.dgiego38.sentinellefocus.shield
-
-  SentinelleLiveActivity:
-    type: app-extension
-    platform: iOS
-    sources: 
-      - path: LiveActivityExtension
-    settings:
-      GENERATE_INFOPLIST_FILE: YES
-      PRODUCT_BUNDLE_IDENTIFIER: com.dgiego38.sentinellefocus.liveactivity
